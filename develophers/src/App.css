@@ -1,0 +1,48 @@
+/* Reset default browser styles */
+body, h1, h2, h3, p, ul, li, button {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Example font family */
+}
+
+/* Basic styling for the entire app */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Styling for headings */
+h1, h2, h3 {
+  margin-bottom: 10px;
+}
+
+/* Styling for buttons */
+button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for lists */
+ul {
+  list-style-type: none;
+}
+
+/* Styling for cart items */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item img {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
