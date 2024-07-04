@@ -34,15 +34,195 @@ ul {
   list-style-type: none;
 }
 
-/* Styling for cart items */
+/* Cart Page Styles */
+.cart-page {
+  padding: 20px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .cart-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.cart-item img {
-  width: 80px;
-  height: auto;
-  margin-right: 10px;
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+}
+
+.cart-summary {
+  margin-top: 20px;
+}
+
+.cart-summary h3 {
+  margin: 5px 0;
+}
+
+.app {
+  position: relative;
+}
+
+/* Cart Icon and Item Count */
+.cart-icon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.item-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Product Page Styles */
+.product-page {
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Optional: Add space between items */
+}
+
+.product-item {
+  flex: 1 1 30%; /* Adjust the width of each item as needed */
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden; /* Ensure the zoomed image doesn't overflow the container */
+  position: relative;
+}
+
+.product-main-image,
+.product-small-image {
+  transition: transform 0.3s ease;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.product-main-image:hover,
+.product-small-image:hover {
+  transform: scale(1.5); /* Zoom the image on hover */
+}
+
+.product-small-images {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.product-small-image {
+  width: 50px;
+  height: 50px;
+}
+
+/* View Cart link styles */
+.view-cart-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.view-cart-link:hover {
+  background-color: #0056b3;
+}
+
+/* Checkout Page Styles */
+.checkout-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.items-summary {
+  grid-column: 1; /* Left column */
+}
+
+.items-list {
+  display: flex; /* Use flexbox to arrange items in a row */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+  gap: 10px; /* Adjust spacing between items */
+}
+
+.items-list li {
+  list-style-type: none; /* Remove default list styling */
+  width: 200px; /* Adjust width of each item */
+  border: 1px solid #ccc; /* Optional: Add border for each item */
+  padding: 10px; /* Optional: Add padding for each item */
+}
+
+.form-section {
+  grid-column: 2; /* Right column */
+}
+
+.payment-methods {
+  grid-column: span 2; /* Full width */
+  margin-top: 20px;
+}
+
+/* Responsive Layout for Checkout Page */
+@media (max-width: 768px) {
+  .checkout-page {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+  }
+
+  .form-section {
+    grid-column: 1; /* Full width on smaller screens */
+  }
+
+  .items-summary,
+  .payment-methods {
+    grid-column: 1; /* Full width on smaller screens */
+  }
+
+  .items-list {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
 }
