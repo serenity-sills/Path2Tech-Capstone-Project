@@ -3,119 +3,131 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import StripePayment from './StripePayment'; // Replace with your payment component
+import StripePayment from './StripePayment';
 
-// Define the validation schema using Yup
+// Validation schema for the form using yup
 const schema = yup.object().shape({
-  fullName: yup.string().required('Full name is required'),
-  email: yup.string().email('Invalid email').required('Email is required'),
+  fullName: yup.string().required(),
+  email: yup.string().email('Invalid email').required(),
   billingAddress: yup.object().shape({
-    street: yup.string().required('Street address is required'),
+    street: yup.string().required(),
     suite: yup.string(),
-    city: yup.string().required('City is required'),
-    state: yup.string().required('State is required'),
-    zip: yup.string().required('Zip code is required'),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    zip: yup.string().required(),
   }),
   shippingAddress: yup.object().shape({
-    street: yup.string().required('Street address is required'),
+    street: yup.string().required(),
     suite: yup.string(),
-    city: yup.string().required('City is required'),
-    state: yup.string().required('State is required'),
-    zip: yup.string().required('Zip code is required'),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    zip: yup.string().required(),
   }),
   sameAsBilling: yup.boolean(),
-  paymentMethod: yup.string().required('Payment method is required'),
-  shippingMethod: yup.string().required('Shipping method is required'),
+  paymentMethod: yup.string().required(),
+  shippingMethod: yup.string().required(),
 });
 
 const CheckoutPage = ({ cart }) => {
-  const navigate = useNavigate(); // Use navigate to programmatically navigate
-  const [sameAsBilling, setSameAsBilling] = useState(true); // State for tracking if shipping address is the same as billing
-  const [isConfirming, setIsConfirming] = useState(false); // State for tracking if the user is confirming the order
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(''); // State for tracking selected payment method
+  const navigate = useNavigate();
+  const [sameAsBilling, setSameAsBilling] = useState(true);
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+  const [shippingCost, setShippingCost] = useState(0);
 
-  // Initialize the form with react-hook-form and Yup validation
-  const { register, handleSubmit, formState: { errors }, watch } = useForm({
+  // Initialize form handling with react-hook-form and yup
+  const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
       sameAsBilling: true,
     },
   });
 
-  const watchSameAsBilling = watch("sameAsBilling"); // Watch for changes to the "sameAsBilling" field
+  // Watch for changes in sameAsBilling and shippingMethod fields
+  const watchSameAsBilling = watch("sameAsBilling");
+  const selectedShippingMethod = watch("shippingMethod");
 
-  // Calculate subtotal, tax, and total based on cart items
+  // Calculate order totals whenever cart or shipping cost changes
   useEffect(() => {
     const calculateTotals = () => {
       const subtotalValue = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-      const taxValue = subtotalValue * 0.10; // Assuming 10% tax rate
-      const totalValue = subtotalValue + taxValue;
+      const taxValue = subtotalValue * 0.10;
+      const totalValue = subtotalValue + taxValue + shippingCost;
       setSubtotal(subtotalValue);
       setTax(taxValue);
       setTotal(totalValue);
     };
 
     calculateTotals();
-  }, [cart]);
+  }, [cart, shippingCost]);
+
+  // Handle payment method selection change
+  const handlePaymentMethodChange = (e) => {
+    setSelectedPaymentMethod(e.target.value);
+
+    // Automatically open new tab for PayPal or AfterPay login
+    if (e.target.value === 'paypal') {
+      window.open('https://www.paypal.com/signin', '_blank');
+    } else if (e.target.value === 'afterpay') {
+      window.open('https://www.afterpay.com', '_blank');
+    }
+  };
+
+  // Handle shipping method selection change
+  const handleShippingMethodChange = (e) => {
+    const shippingMethod = e.target.value;
+    let cost = 0;
+    if (shippingMethod === 'standard') {
+      cost = 4.95;
+    } else if (shippingMethod === 'express') {
+      cost = 7.95;
+    }
+    setShippingCost(cost);
+  };
 
   // Handle form submission
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    if (!selectedShippingMethod) {
+      alert('Please select a shipping method.');
+      return;
+    }
+
     if (!isConfirming) {
       setIsConfirming(true);
       return;
     }
-    // Handle form submission, integrate with payment gateway, etc.
-    console.log('Form submitted:', data);
-    // Navigate to confirmation page
-    navigate('/confirmation', { state: { orderDetails: { ...data, items: cart, total } } });
-  };
 
-  // Handle changes to the selected payment method
-  const handlePaymentMethodChange = (e) => {
-    setSelectedPaymentMethod(e.target.value);
-  };
+    // Simulate payment processing (you would replace this with actual payment logic)
+    try {
+      console.log('Processing payment with:', selectedPaymentMethod);
 
-  // Render additional fields based on the selected payment method
-  const renderPaymentFields = () => {
-    switch (selectedPaymentMethod) {
-      case 'credit':
-        return <StripePayment />;
-      case 'apple':
-        return (
-          <a href="https://www.apple.com/apple-pay/" target="_blank" rel="noopener noreferrer">
-            <button>Pay with Apple Pay</button>
-          </a>
-        );
-      case 'google':
-        return (
-          <a href="https://pay.google.com" target="_blank" rel="noopener noreferrer">
-            <button>Pay with Google Pay</button>
-          </a>
-        );
-      case 'paypal':
-        return (
-          <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer">
-            <button>Pay with Paypal</button>
-          </a>
-        );
-      case 'klarna':
-        return (
-          <a href="https://www.klarna.com" target="_blank" rel="noopener noreferrer">
-            <button>Pay with Klarna</button>
-          </a>
-        );
-      case 'afterpay':
-        return (
-          <a href="https://www.afterpay.com" target="_blank" rel="noopener noreferrer">
-            <button>Pay with AfterPay</button>
-          </a>
-        );
-      default:
-        return null;
+      // For demonstration, we'll just simulate a delay
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      console.log('Payment successful for:', data);
+      navigate('/confirmation', { state: { orderDetails: { ...data, items: cart, total } } });
+    } catch (error) {
+      console.error('Payment error:', error);
+      // Handle payment error gracefully
     }
+  };
+
+  // Conditionally render payment fields based on selected payment method
+  const renderPaymentFields = () => {
+    if (selectedPaymentMethod === 'credit') {
+      return <StripePayment />;
+    }
+    return null;
+  };
+
+  // Handle checkbox change for sameAsBilling
+  const handleSameAsBillingChange = (e) => {
+    const isChecked = e.target.checked;
+    setSameAsBilling(isChecked);
+    setValue('sameAsBilling', isChecked);
   };
 
   return (
@@ -125,7 +137,7 @@ const CheckoutPage = ({ cart }) => {
         <ul>
           {cart.map((item, index) => (
             <li key={index}>
-              <img src={item.image || 'https://via.placeholder.com/100'} alt={item.name} />
+              <img src={item.image || 'https://via.placeholder.com/150'} alt={item.name} style={{ width: '150px', height: '150px' }} />
               <p>{item.name}</p>
               <p>Quantity: {item.quantity}</p>
               <p>Price: ${item.price.toFixed(2)}</p>
@@ -165,7 +177,7 @@ const CheckoutPage = ({ cart }) => {
           </div>
           <div>
             <label>
-              <input type="checkbox" {...register('sameAsBilling')} checked={watchSameAsBilling} onChange={(e) => setSameAsBilling(e.target.checked)} />
+              <input type="checkbox" {...register('sameAsBilling')} checked={watchSameAsBilling} onChange={handleSameAsBillingChange} />
               Shipping address same as billing
             </label>
           </div>
@@ -189,54 +201,46 @@ const CheckoutPage = ({ cart }) => {
             </div>
           )}
           <div>
+            <h3>Order Summary</h3>
+            <p>Subtotal: ${subtotal.toFixed(2)}</p>
+            <p>Tax: ${tax.toFixed(2)}</p>
+            <p>Shipping Cost: ${shippingCost.toFixed(2)}</p>
+            <p>Total: ${(subtotal + tax + shippingCost).toFixed(2)}</p>
+          </div>
+          <div>
+            <h3>Shipping Method</h3>
+            <label>
+              <input type="radio" value="standard" {...register('shippingMethod')} onChange={handleShippingMethodChange} />
+              Standard Shipping ($4.95)
+            </label>
+            <label>
+              <input type="radio" value="express" {...register('shippingMethod')} onChange={handleShippingMethodChange} />
+              Express Shipping ($7.95)
+            </label>
+            <p>{errors.shippingMethod?.message}</p>
+          </div>
+          <div>
             <h3>Payment Method</h3>
             <label>
               <input type="radio" value="credit" {...register('paymentMethod')} onChange={handlePaymentMethodChange} />
               Credit/Debit Card
             </label>
             <label>
-              <input type="radio" value="apple" {...register('paymentMethod')} onChange={handlePaymentMethodChange} />
-              Apple Pay
-            </label>
-            <label>
-              <input type="radio" value="google" {...register('paymentMethod')} onChange={handlePaymentMethodChange} />
-              Google Pay
-            </label>
-            <label>
               <input type="radio" value="paypal" {...register('paymentMethod')} onChange={handlePaymentMethodChange} />
-              Paypal
-            </label>
-            <label>
-              <input type="radio" value="klarna" {...register('paymentMethod')} onChange={handlePaymentMethodChange} />
-              Klarna
+              PayPal
             </label>
             <label>
               <input type="radio" value="afterpay" {...register('paymentMethod')} onChange={handlePaymentMethodChange} />
               AfterPay
             </label>
+            <p>{errors.paymentMethod?.message}</p>
           </div>
-          <div>
-            <h3>Shipping Method</h3>
-            <label>
-              <input type="radio" value="standard" {...register('shippingMethod')} />
-              Standard Shipping
-            </label>
-            {/* Add other shipping methods */}
-          </div>
-          <div>
-            <h3>Order Summary</h3>
-            <p>Subtotal: ${subtotal.toFixed(2)}</p>
-            <p>Tax: ${tax.toFixed(2)}</p>
-            <p>Total: ${total.toFixed(2)}</p>
-          </div>
+          {renderPaymentFields()} {/* Render credit/debit card fields based on selected payment method */}
+          <button type="submit">Place Order</button>
         </form>
-      </div>
-      <div className="payment-methods">
-        {renderPaymentFields()} {/* Render additional payment fields or redirect based on the selected payment method */}
       </div>
     </div>
   );
 };
 
 export default CheckoutPage;
-

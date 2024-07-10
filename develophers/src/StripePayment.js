@@ -1,32 +1,52 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import axios from 'axios';
 
-const stripePromise = loadStripe('your-publishable-key-here');
+const stripePromise = loadStripe('pk_test_51PZefARvWkD7Jgt6aimwAWUaK68byjz3krk0e0aEQYJepy3h0qu7PZcdTLBspBmqhZzsLrMBLrD0xdokJtFU3xX600aDEmELBD'); 
 
-const CheckoutForm = () => {
+const StripePayment = () => {
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     if (!stripe || !elements) {
       return;
     }
 
-    const cardElement = elements.getElement(CardElement);
-
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
-      card: cardElement,
+      card: elements.getElement(CardElement),
     });
 
     if (error) {
-      console.log('[error]', error);
+      console.error(error);
     } else {
-      console.log('[PaymentMethod]', paymentMethod);
-      // You can then send the paymentMethod.id to your server for processing
+      // Here you would send paymentMethod.id to your backend for further processing
+      console.log('PaymentMethod:', paymentMethod);
+
+      // Simulate sending paymentMethod.id to your backend
+      simulatePayment(paymentMethod.id);
+    }
+  };
+
+  const simulatePayment = async (paymentMethodId) => {
+    try {
+      // Simulate sending paymentMethodId to your backend
+      const response = await axios.post('/your-backend-endpoint', {
+        paymentMethodId: paymentMethodId,
+      });
+
+      console.log('Backend response:', response.data);
+
+      // Navigate to confirmation page after successful payment processing
+      // Replace '/confirmation' with your actual confirmation page path
+      window.location.href = '/confirmation';
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      // Handle error scenarios
     }
   };
 
@@ -40,12 +60,10 @@ const CheckoutForm = () => {
   );
 };
 
-const StripePayment = () => {
-  return (
-    <Elements stripe={stripePromise}>
-      <CheckoutForm />
-    </Elements>
-  );
-};
+const StripePaymentWrapper = () => (
+  <Elements stripe={stripePromise}>
+    <StripePayment />
+  </Elements>
+);
 
-export default StripePayment;
+export default StripePaymentWrapper;

@@ -4,6 +4,7 @@ import ProductPage from './ProductPage';
 import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
+import StripePaymentWrapper from './StripePayment'; // Import the StripePaymentWrapper component
 
 const App = () => {
   // State to manage the shopping cart
@@ -52,6 +53,9 @@ const App = () => {
 
         {/* Route for the Checkout Page */}
         <Route path="/checkout" element={<CheckoutPage cart={cart} />} />
+
+        {/* Route for the Stripe Payment Page */}
+        <Route path="/payment" element={<StripePaymentWrapper cart={cart} />} />
 
         {/* Route for the Confirmation Page */}
         <Route path="/confirmation" element={<Confirmation />} />
