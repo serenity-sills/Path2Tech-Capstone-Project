@@ -4,7 +4,8 @@ import ProductPage from './ProductPage';
 import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
-import StripePaymentWrapper from './StripePayment'; // Import the StripePaymentWrapper component
+import { loadStripe } from '@stripe/stripe-js'; // Import loadStripe from @stripe/stripe-js
+import StripePaymentWrapper from './StripePayment';
 
 const App = () => {
   // State to manage the shopping cart
@@ -28,6 +29,8 @@ const App = () => {
   const removeFromCart = (productId) => {
     setCart(cart.filter(item => item.id !== productId));
   };
+
+  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
   // Function to update the quantity of a product in the cart
   const updateQuantity = (productId, newQuantity) => {

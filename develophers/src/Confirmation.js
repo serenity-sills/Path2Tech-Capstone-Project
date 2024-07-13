@@ -1,9 +1,19 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom'; // Use this to get info passed from the previous page
+import { useLocation } from 'react-router-dom';
 
 const Confirmation = () => {
-  const location = useLocation(); // Get the location info
-  const { orderDetails } = location.state; // Get order details from the location
+  const location = useLocation();
+  const { orderDetails } = location.state || {}; // Destructure orderDetails with a default empty object
+
+  if (!orderDetails) {
+    // Handle cases where orderDetails is not available
+    return (
+      <div>
+        <h2>Order Confirmation</h2>
+        <p>No order details found.</p>
+      </div>
+    );
+  }
 
   // Calculate the total price of the order
   const totalPrice = orderDetails.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -17,13 +27,13 @@ const Confirmation = () => {
       <h3>Order Number: {Math.floor(Math.random() * 100000)}</h3>
       <h3>Items:</h3>
       <ul>
-        {orderDetails.items.map(item => ( // List all ordered items
+        {orderDetails.items.map(item => (
           <li key={item.id}>
             <div>
-              <img src={item.image} alt={item.name} style={{ width: '100px', height: 'auto' }} /> {/* Show item image */}
+              <img src={item.image} alt={item.name} style={{ width: '100px', height: 'auto' }} />
             </div>
             <div>
-              <p>{item.name} - ${item.price.toFixed(2)} - Quantity: {item.quantity}</p> {/* Show item name, price, and quantity */}
+              <p>{item.name} - ${item.price.toFixed(2)} - Quantity: {item.quantity}</p>
             </div>
           </li>
         ))}
@@ -37,9 +47,9 @@ const Confirmation = () => {
       <p>{orderDetails.paymentMethod}</p>
 
       <h3>Shipping Details:</h3>
-      <p>Name: {orderDetails.fullName}</p> {/* Show the name */}
-      <p>Email: {orderDetails.email}</p> {/* Show the email */}
-      <p>Billing Address: {orderDetails.billingAddress.street}, {orderDetails.billingAddress.city}, {orderDetails.billingAddress.state}, {orderDetails.billingAddress.zip}</p> {/* Show the billing address */}
+      <p>Name: {orderDetails.fullName}</p>
+      <p>Email: {orderDetails.email}</p>
+      <p>Billing Address: {orderDetails.billingAddress.street}, {orderDetails.billingAddress.city}, {orderDetails.billingAddress.state}, {orderDetails.billingAddress.zip}</p>
       
       {/* Conditionally show shipping address if different from billing */}
       {!orderDetails.sameAsBilling && (
@@ -50,3 +60,4 @@ const Confirmation = () => {
 };
 
 export default Confirmation;
+
