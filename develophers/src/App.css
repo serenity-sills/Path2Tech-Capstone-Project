@@ -2,36 +2,43 @@
 body, h1, h2, h3, p, ul, li, button {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif; /* Example font family */
+  font-family: 'Poppins', sans-serif; /* Updated font family */
+  box-sizing: border-box;
 }
 
 /* Basic styling for the entire app */
 body {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: rgb(2, 34, 24); /* Updated background color */
+  color: #fff; /* Updated text color */
+  line-height: 1.6; /* Improve readability */
+  margin: 20px;
+  padding: 10px 10px;
 }
 
 /* Styling for headings */
 h1, h2, h3 {
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Increased margin for better separation */
 }
 
 /* Styling for buttons */
 button {
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 10px 15px; /* Slightly larger padding for better touch targets */
+  background-color: rgb(2, 34, 24); /* Updated background color */
+  color: #fff; /* Text color for buttons */
   border: none;
+  border-radius: 4px; /* Rounded corners */
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker shade on hover */
 }
 
 /* Styling for lists */
 ul {
   list-style-type: none;
+  padding: 0; /* Remove default padding */
 }
 
 /* Cart Page Styles */
@@ -48,10 +55,11 @@ ul {
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
+  gap: 15px;
+  border: 1px solid #333; /* Updated border color */
+  padding: 15px;
   border-radius: 5px;
+  background-color: #1a1a1a; /* Updated background color */
 }
 
 .cart-item-image {
@@ -76,34 +84,31 @@ ul {
   margin: 5px 0;
 }
 
-.app {
-  position: relative;
-}
-
 /* Cart Icon and Item Count */
 .cart-icon {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #007bff;
+  top: 15px;
+  right: 15px;
+  background-color: rgb(2, 34, 24); /* Updated background color */
   color: white;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Slight shadow for visibility */
 }
 
 .item-count {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -5px;
+  right: -5px;
   background-color: red;
   color: white;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -117,112 +122,250 @@ ul {
 }
 
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Optional: Add space between items */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
+  gap: 20px;
 }
 
 .product-item {
-  flex: 1 1 30%; /* Adjust the width of each item as needed */
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid #333; /* Updated border color */
+  padding: 15px;
   border-radius: 5px;
   text-align: center;
-  overflow: hidden; /* Ensure the zoomed image doesn't overflow the container */
+  background-color: #1a1a1a; /* Updated background color */
+  overflow: hidden;
   position: relative;
 }
 
-.product-main-image,
-.product-small-image {
+/* Main image styles */
+.product-main-image {
+  width: 200px; /* Fixed width */
+  height: 200px; /* Fixed height */
+  object-fit: cover; /* Ensure images cover the area without distortion */
   transition: transform 0.3s ease;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
 }
 
-.product-main-image:hover,
-.product-small-image:hover {
-  transform: scale(1.5); /* Zoom the image on hover */
+.product-main-image:hover {
+  transform: scale(1.1); /* More subtle zoom effect */
 }
 
+/* Small images container */
 .product-small-images {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
+  position: relative; /* Position relative for overlay effect */
 }
 
+/* Small image styles */
 .product-small-image {
   width: 50px;
   height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Zoom effect for small images */
+.product-small-image:hover {
+  transform: scale(3); /* Larger zoom effect */
+}
+
+/* Large view container for zoom effect */
+.product-small-image-zoom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px; /* Increased size for larger zoomed image */
+  height: 300px;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border: 1px solid #333; /* Updated border color */
+  overflow: hidden; /* Hide overflow for cleaner view */
+}
+
+.product-small-image:hover ~ .product-small-image-zoom {
+  display: flex; /* Show zoomed image on hover */
+}
+
+.product-small-image-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure zoomed image fits the container */
+  cursor: zoom-out;
 }
 
 /* View Cart link styles */
 .view-cart-link {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #007bff;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: rgb(2, 34, 24); /* Updated background color */
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .view-cart-link:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker shade on hover */
 }
 
 /* Checkout Page Styles */
 .checkout-page {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-template-columns: 1fr 2fr; /* Swap columns: form section on the left, items summary on the right */
   grid-gap: 20px;
   padding: 20px;
-}
-
-.items-summary {
-  grid-column: 1; /* Left column */
-}
-
-.items-list {
-  display: flex; /* Use flexbox to arrange items in a row */
-  flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
-  gap: 10px; /* Adjust spacing between items */
-}
-
-.items-list li {
-  list-style-type: none; /* Remove default list styling */
-  width: 200px; /* Adjust width of each item */
-  border: 1px solid #ccc; /* Optional: Add border for each item */
-  padding: 10px; /* Optional: Add padding for each item */
+  background-color: #1a1a1a; /* Updated background color */
+  max-width: 1200px; /* Max width for better readability */
+  margin: 0 auto; /* Center the checkout page */
 }
 
 .form-section {
+  grid-column: 1; /* Left column */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between form elements */
+}
+
+.items-summary {
   grid-column: 2; /* Right column */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased space between items and sections */
+}
+
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Increased spacing for better layout */
+}
+
+.items-list li {
+  list-style-type: none;
+  width: 100%; /* Full width on small screens */
+  max-width: 240px; /* Larger max width for better display */
+  border: 1px solid #333; /* Updated border color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px;
+  background-color: #1a1a1a; /* Updated background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.items-list img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px; /* Rounded corners for images */
+}
+
+.items-list p {
+  margin: 5px 0; /* Margin for text elements */
+  text-align: center; /* Center text */
 }
 
 .payment-methods {
-  grid-column: span 2; /* Full width */
+  grid-column: 1 / span 2; /* Full width of the grid */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between payment method options */
+}
+
+/* Form Styling */
+form {
+  background-color: #1a1a1a; /* Updated background color */
+  border: 1px solid #333; /* Updated border color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+form h2, form h3 {
+  margin-bottom: 15px; /* Margin below headings */
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between input elements */
+}
+
+form input[type="text"], form input[type="email"], form input[type="radio"] {
+  padding: 10px;
+  border: 1px solid #333; /* Updated border color */
+  border-radius: 4px;
+  font-size: 16px; /* Improved font size for readability */
+  background-color: #fff; /* White background for inputs */
+}
+
+form input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+}
+
+form button {
+  margin-top: 20px; /* Space above button */
+  width: 100%; /* Full width button */
+}
+
+/* Confirmation Page Styles */
+.confirmation-page {
+  padding: 20px;
+  background-color: #1a1a1a; /* Dark background for consistency */
+  color: #fff; /* White text color for contrast */
+}
+
+.confirmation-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between items */
+}
+
+.confirmation-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduced gap for a more compact layout */
+  border: 1px solid #333; /* Updated border color */
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #1a1a1a; /* Uniform background color for items */
+}
+
+.confirmation-item-image {
+  width: 40px; /* Smaller width for uniformity */
+  height: 40px; /* Smaller height for uniformity */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border-radius: 4px; /* Rounded corners for a softer look */
+}
+
+.confirmation-item-details {
+  flex-grow: 1;
+}
+
+.confirmation-item-details p {
+  margin: 5px 0;
+}
+
+.confirmation-summary {
   margin-top: 20px;
 }
 
-/* Responsive Layout for Checkout Page */
+.confirmation-summary h3 {
+  margin: 5px 0;
+  color: #fff; /* Color for summary headings */
+}
+
+/* Additional styles for better responsiveness and usability */
 @media (max-width: 768px) {
   .checkout-page {
-    grid-template-columns: 1fr; /* Single column layout on smaller screens */
-  }
-
-  .form-section {
-    grid-column: 1; /* Full width on smaller screens */
-  }
-
-  .items-summary,
-  .payment-methods {
-    grid-column: 1; /* Full width on smaller screens */
-  }
-
-  .items-list {
-    flex-direction: column; /* Stack items vertically on smaller screens */
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
   }
 }
