@@ -1,63 +1,75 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'; // Hook to access the current location
+import './App.css'; // Import CSS for styling
+
+// Function to generate a random order number
+const generateOrderNumber = () => {
+  return `ORD-${Math.floor(100000 + Math.random() * 900000)}`;
+};
 
 const Confirmation = () => {
-  const location = useLocation();
-  const { orderDetails } = location.state || {}; // Destructure orderDetails with a default empty object
+  const location = useLocation(); // Get the current location object
+  const { state } = location; // Extract the state from location
+  const orderDetails = state?.orderDetails || {}; // Get order details from state or use an empty object
 
-  if (!orderDetails) {
-    // Handle cases where orderDetails is not available
-    return (
-      <div>
-        <h2>Order Confirmation</h2>
-        <p>No order details found.</p>
-      </div>
-    );
-  }
-
-  // Calculate the total price of the order
-  const totalPrice = orderDetails.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const orderNumber = generateOrderNumber(); // Generate a random order number
 
   return (
-    <div>
-      <h2>Order Confirmation</h2>
-      <p>Thank you for your order!</p>
+    <div className="confirmation-page"> {/* Container for the confirmation page */}
+      <div className="order-details">
+        <h1>Thank You for Your Purchase!</h1>
+        <h2>Order Summary</h2>
+        <p><strong>Order Number:</strong> {orderNumber}</p>
+        <p><strong>Full Name:</strong> {orderDetails.fullName || 'N/A'}</p>
+        <p><strong>Email:</strong> {orderDetails.email || 'N/A'}</p>
+        
+        <div className="address-section"> {/* Container for billing address */}
+          <h3>Billing Address:</h3>
+          <p>{orderDetails.billingAddress?.street || 'N/A'}, {orderDetails.billingAddress?.suite || ''}</p>
+          <p>{orderDetails.billingAddress?.city || 'N/A'}, {orderDetails.billingAddress?.state || 'N/A'}, {orderDetails.billingAddress?.zip || 'N/A'}</p>
+        </div>
 
-      {/* Show a random order number */}
-      <h3>Order Number: {Math.floor(Math.random() * 100000)}</h3>
-      <h3>Items:</h3>
-      <ul>
-        {orderDetails.items.map(item => (
-          <li key={item.id}>
-            <div>
-              <img src={item.image} alt={item.name} style={{ width: '100px', height: 'auto' }} />
-            </div>
-            <div>
-              <p>{item.name} - ${item.price.toFixed(2)} - Quantity: {item.quantity}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+        <div className="address-section"> {/* Container for shipping address */}
+          <h3>Shipping Address:</h3>
+          {orderDetails.sameAsBilling ? (
+            <p>Same as billing address</p>
+          ) : (
+            <>
+              <p>{orderDetails.shippingAddress?.street || 'N/A'}, {orderDetails.shippingAddress?.suite || ''}</p>
+              <p>{orderDetails.shippingAddress?.city || 'N/A'}, {orderDetails.shippingAddress?.state || 'N/A'}, {orderDetails.shippingAddress?.zip || 'N/A'}</p>
+            </>
+          )}
+        </div>
 
-      {/* Show the total price */}
-      <h3>Total: ${totalPrice.toFixed(2)}</h3>
+        <div className="payment-method"> {/* Container for payment method */}
+          <h3>Payment Method:</h3>
+          <p>{orderDetails.paymentMethod || 'N/A'}</p>
+        </div>
+      </div>
 
-      {/* Show the payment method */}
-      <h3>Payment Method:</h3>
-      <p>{orderDetails.paymentMethod}</p>
-
-      <h3>Shipping Details:</h3>
-      <p>Name: {orderDetails.fullName}</p>
-      <p>Email: {orderDetails.email}</p>
-      <p>Billing Address: {orderDetails.billingAddress.street}, {orderDetails.billingAddress.city}, {orderDetails.billingAddress.state}, {orderDetails.billingAddress.zip}</p>
-      
-      {/* Conditionally show shipping address if different from billing */}
-      {!orderDetails.sameAsBilling && (
-        <p>Shipping Address: {orderDetails.shippingAddress.street}, {orderDetails.shippingAddress.city}, {orderDetails.shippingAddress.state}, {orderDetails.shippingAddress.zip}</p>
-      )}
+      <div className="confirmation-items"> {/* Container for items summary */}
+        <h3>Items:</h3>
+        <ul>
+          {orderDetails.items?.length > 0 ? (
+            orderDetails.items.map((item, index) => ( // Map through order items to display them
+              <li key={index} className="confirmation-item"> {/* List item with unique key */}
+                <img src={item.image || 'https://via.placeholder.com/150'} alt={item.name} className="confirmation-item-image" /> {/* Image with alt text */}
+                <div>
+                  <p><strong>{item.name}</strong></p>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Price: ${item.price.toFixed(2)}</p>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p>No items found</p> // Message if no items are found
+          )}
+        </ul>
+        <h3>Total:</h3>
+        <p>${orderDetails.total?.toFixed(2) || '0.00'}</p> {/* Display total price */}
+      </div>
     </div>
   );
 };
 
 export default Confirmation;
-
