@@ -25,7 +25,7 @@ body {
     background-position: center;
     flex: 30;
     height: 20px;
-    background-color: rgb(2, 34, 24);
+    background-color: rgb(2, 34, 24) !important;
     margin: 20px;
     padding: 10px 10px;
  
@@ -116,13 +116,10 @@ a{
     align-items: center;
 
 }
-logo{
+.logo{
     margin-left: 10px;
     padding: 20px 20px;
     border-radius: 10px;
     font-size: small;
     align-items: center;
-
 }
-
-
