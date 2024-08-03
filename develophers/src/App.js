@@ -4,8 +4,8 @@ import ProductPage from './ProductPage';
 import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
-import Policy from './Policy';
-import About from './About'; // Include About component
+import Policy from './Policy';  // Include Policy component
+import About from './About';   // Include About component
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -43,11 +43,12 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage cart={cart} />} />
         <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/about" element={<About />} /> {/* Include About route */}
-        <Route path="/policy" element={<Policy />} />
+        <Route path="/policy" element={<Policy />} /> {/* Include Policy route */}
       </Routes>
     </Router>
   );
 };
 
 export default App;
+
 
