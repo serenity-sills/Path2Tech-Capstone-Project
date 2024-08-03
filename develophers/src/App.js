@@ -4,6 +4,7 @@ import ProductPage from './ProductPage';
 import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
+ import About from './About';
 import Policy from ',/Policy';
 
 
@@ -48,10 +49,11 @@ const App = () => {
         <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
         <Route path="/checkout" element={<CheckoutPage cart={cart} />} />
         <Route path="/confirmation" element={<Confirmation />} />
+        <Route path="/policy" element={<Policy />} />
       </Routes>
     </Router>
   );
 };
 
-
 export default App;
+
