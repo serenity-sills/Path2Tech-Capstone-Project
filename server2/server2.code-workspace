@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Policy Page"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Policy Page"
+	}
+}
