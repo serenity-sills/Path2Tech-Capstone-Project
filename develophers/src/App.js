@@ -5,7 +5,7 @@ import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
 import Policy from './Policy';
-
+import About from './About'; // Include About component
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -42,12 +42,11 @@ const App = () => {
         <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
         <Route path="/checkout" element={<CheckoutPage cart={cart} />} />
         <Route path="/confirmation" element={<Confirmation />} />
+        <Route path="/about" element={<About />} /> {/* Include About route */}
         <Route path="/policy" element={<Policy />} />
       </Routes>
-
     </Router>
   );
 };
 
 export default App;
-
