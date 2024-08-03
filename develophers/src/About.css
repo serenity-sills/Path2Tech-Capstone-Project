@@ -1,7 +1,7 @@
 header h1 {
     color: white;
-}
-body {
+  }
+  .about-container {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -11,9 +11,9 @@ body {
     background-image: url(https://res.cloudinary.com/dt84tw7zr/image/fetch/f_auto,g_auto,q_auto/https://www.gameplan-a.com/wp-content/uploads/fly-images/21103/Female-athletes-adidas-women-1440x9999.jpg);
     background-size: cover;
     background-position: center;
-}
-
-header {
+  }
+  
+  header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -21,21 +21,21 @@ header {
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.7);
     position: relative;
-}
-
-.menu-bar {
+  }
+  
+  .menu-bar {
     position: relative;
-}
-
-.menu-button {
+  }
+  
+  .menu-button {
     background-color: black;
     border: none;
     color: white;
     font-size: 16px;
     cursor: pointer;
-}
-
-.dropdown-content {
+  }
+  
+  .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
@@ -44,46 +44,46 @@ header {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-}
-
-.dropdown-content a {
+  }
+  
+  .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
-
-.dropdown-content a:hover {
+  }
+  
+  .dropdown-content a:hover {
     background-color: #ddd;
-}
-
-.menu-bar:hover .dropdown-content {
+  }
+  
+  .menu-bar:hover .dropdown-content {
     display: block;
-}
-
-.search-bar {
+  }
+  
+  .search-bar {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.search-bar input {
+  }
+  
+  .search-bar input {
     padding: 5px;
     border-radius: 5px;
     border: none;
-}
-
-.about-us-container {
+  }
+  
+  .about-us-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     padding: 20px;
     height: calc(100vh - 60px); 
-}
-
-.about-us-box {
+  }
+  
+  .about-us-box {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -91,13 +91,15 @@ header {
     max-width: 300px;
     text-align: center;
     margin: 10px;
-}
-
-.about-us-box h2 {
+  }
+  
+  .about-us-box h2 {
     margin-top: 0;
     color: black; 
-}
-
-.about-us-box p {
+  }
+  
+  .about-us-box p {
     color: black;
-}
+  }
+  
+  

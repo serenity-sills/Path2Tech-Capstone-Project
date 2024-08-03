@@ -1,12 +1,8 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Sports Equipment Seller</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body> -->
+import React from 'react'
+import './About.css';
+const About = () => {
+  return (
+    <div className = "about-container">
     <header>
         <div class="menu-bar">
             <button class="menu-button">☰ Menu</button>
@@ -19,7 +15,7 @@
         </div>
         <h1>ABOUT US</h1>
         <div class="search-bar">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search..."/>
         </div>
     </header>
     <main class="about-us-container">
@@ -36,5 +32,8 @@
             <p>Our core values are to provide high quality products  that are not only affordable but reliable. We take pride in knowing that we have the understanding of transparency when it comes to the conditions of our equipment along with our sourcing. We empower athletes of all backgrounds to achieve their goals and beyond. </p>
         </div>
     </main>
-<!-- </body>
-</html> -->
+ </div>
+  )
+}
+
+export default About
