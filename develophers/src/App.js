@@ -6,6 +6,7 @@ import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
 import { loadStripe } from '@stripe/stripe-js'; // Import loadStripe from @stripe/stripe-js
 import StripePaymentWrapper from './StripePayment';
+import About from './About';
 
 const App = () => {
   // State to manage the shopping cart
@@ -62,9 +63,12 @@ const App = () => {
 
         {/* Route for the Confirmation Page */}
         <Route path="/confirmation" element={<Confirmation />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );
 };
 
 export default App;
+
+
