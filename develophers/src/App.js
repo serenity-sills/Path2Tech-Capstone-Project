@@ -4,8 +4,6 @@ import ProductPage from './ProductPage';
 import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
-import { loadStripe } from '@stripe/stripe-js'; // Import loadStripe from @stripe/stripe-js
-import StripePaymentWrapper from './StripePayment';
 import About from './About';
 
 const App = () => {
