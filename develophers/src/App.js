@@ -4,11 +4,14 @@ import ProductPage from './ProductPage';
 import Cart from './Cart';
 import CheckoutPage from './Checkout';
 import Confirmation from './Confirmation';
-import Policy from './Policy';  // Include Policy component
-import About from './About';   // Include About component
+import Policy from ',/Policy';
+
+
+
 
 const App = () => {
   const [cart, setCart] = useState([]);
+
 
   const addToCart = (product) => {
     const existingProduct = cart.find(item => item.id === product.id);
@@ -21,9 +24,11 @@ const App = () => {
     }
   };
 
+
   const removeFromCart = (productId) => {
     setCart(cart.filter(item => item.id !== productId));
   };
+
 
   const updateQuantity = (productId, newQuantity) => {
     if (newQuantity < 1) {
@@ -35,6 +40,7 @@ const App = () => {
     }
   };
 
+
   return (
     <Router>
       <Routes>
@@ -42,13 +48,10 @@ const App = () => {
         <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
         <Route path="/checkout" element={<CheckoutPage cart={cart} />} />
         <Route path="/confirmation" element={<Confirmation />} />
-        <Route path="/about" element={<About />} /> {/* Include About route */}
-        <Route path="/policy" element={<Policy />} /> {/* Include Policy route */}
       </Routes>
     </Router>
   );
 };
 
+
 export default App;
-
-
