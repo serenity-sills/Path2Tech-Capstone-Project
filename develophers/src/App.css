@@ -2,14 +2,14 @@
 body, h1, h2, h3, p, ul, li, button {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif; /* Updated font family */
+  font-family: 'Poppins', sans-serif; /* font family */
   box-sizing: border-box;
 }
 
 /* Basic styling for the entire app */
 body {
-  background-color: rgb(2, 34, 24); /* Updated background color */
-  color: #fff; /* Updated text color */
+  background-color: rgb(2, 34, 24); /* background color */
+  color: #fff; /* text color */
   line-height: 1.6; /* Improve readability */
   margin: 20px;
   padding: 10px 10px;
@@ -17,13 +17,13 @@ body {
 
 /* Styling for headings */
 h1, h2, h3 {
-  margin-bottom: 15px; /* Increased margin for better separation */
+  margin-bottom: 15px; 
 }
 
 /* Styling for buttons */
 button {
   padding: 10px 15px; /* Slightly larger padding for better touch targets */
-  background-color: rgb(2, 34, 24); /* Updated background color */
+  background-color: rgb(33, 31, 31); /* Lightened background color for 'Add to Cart' */
   color: #fff; /* Text color for buttons */
   border: none;
   border-radius: 4px; /* Rounded corners */
@@ -44,6 +44,8 @@ ul {
 /* Cart Page Styles */
 .cart-page {
   padding: 20px;
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
 }
 
 .cart-items {
@@ -56,10 +58,11 @@ ul {
   display: flex;
   align-items: center;
   gap: 15px;
-  border: 1px solid #333; /* Updated border color */
+  border: 1px solid #333; /* border color */
   padding: 15px;
   border-radius: 5px;
-  background-color: #1a1a1a; /* Updated background color */
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
 }
 
 .cart-item-image {
@@ -89,7 +92,7 @@ ul {
   position: fixed;
   top: 15px;
   right: 15px;
-  background-color: rgb(2, 34, 24); /* Updated background color */
+  background-color: rgb(2, 34, 24); /* background color */
   color: white;
   width: 45px;
   height: 45px;
@@ -119,6 +122,8 @@ ul {
 /* Product Page Styles */
 .product-page {
   padding: 20px;
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
 }
 
 .product-list {
@@ -128,11 +133,12 @@ ul {
 }
 
 .product-item {
-  border: 1px solid #333; /* Updated border color */
+  border: 1px solid #333; /* border color */
   padding: 15px;
   border-radius: 5px;
   text-align: center;
-  background-color: #1a1a1a; /* Updated background color */
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
   overflow: hidden;
   position: relative;
 }
@@ -204,7 +210,7 @@ ul {
   position: fixed;
   top: 15px;
   right: 15px;
-  background-color: rgb(2, 34, 24); /* Updated background color */
+  background-color: grey; /* Grey background color */
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -213,7 +219,7 @@ ul {
 }
 
 .view-cart-link:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: blue; /* Blue background color on hover */
 }
 
 /* Checkout Page Styles */
@@ -222,7 +228,8 @@ ul {
   grid-template-columns: 1fr 2fr; /* Swap columns: form section on the left, items summary on the right */
   grid-gap: 20px;
   padding: 20px;
-  background-color: #1a1a1a; /* Updated background color */
+  background-color: white; /* Updated background color */
+  color: black; /* Updated text color */
   max-width: 1200px; /* Max width for better readability */
   margin: 0 auto; /* Center the checkout page */
 }
@@ -254,7 +261,8 @@ ul {
   border: 1px solid #333; /* Updated border color */
   border-radius: 8px; /* Rounded corners */
   padding: 15px;
-  background-color: #1a1a1a; /* Updated background color */
+  background-color: white; /* Updated background color */
+  color: black; /* Updated text color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   display: flex;
   flex-direction: column;
@@ -282,85 +290,44 @@ ul {
 
 /* Form Styling */
 form {
-  background-color: #1a1a1a; /* Updated background color */
+  background-color: white; /* Updated background color */
   border: 1px solid #333; /* Updated border color */
   border-radius: 8px; /* Rounded corners */
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-form h2, form h3 {
-  margin-bottom: 15px; /* Margin below headings */
+form label {
+  margin-bottom: 5px; /* Margin below labels */
+  display: block;
 }
 
-form div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* Space between input elements */
-}
-
-form input[type="text"], form input[type="email"], form input[type="radio"] {
+form input,
+form select {
+  width: 100%;
   padding: 10px;
-  border: 1px solid #333; /* Updated border color */
-  border-radius: 4px;
-  font-size: 16px; /* Improved font size for readability */
-  background-color: #fff; /* White background for inputs */
-}
-
-form input[type="checkbox"] {
-  margin-right: 10px; /* Space between checkbox and label */
+  border: 1px solid #ddd; /* Lighter border color */
+  border-radius: 4px; /* Rounded corners */
+  margin-bottom: 15px; /* Margin below input fields */
 }
 
 form button {
-  margin-top: 20px; /* Space above button */
-  width: 100%; /* Full width button */
-}
-
-/* Confirmation Page Styles */
-.confirmation-page {
-  padding: 20px;
-  background-color: #1a1a1a; /* Dark background for consistency */
-  color: #fff; /* White text color for contrast */
-}
-
-.confirmation-items {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Space between items */
-}
-
-.confirmation-item {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Reduced gap for a more compact layout */
-  border: 1px solid #333; /* Updated border color */
+  background-color: rgb(33, 31, 31); /* Button background color */
+  color: white;
   padding: 10px;
-  border-radius: 5px;
-  background-color: #1a1a1a; /* Uniform background color for items */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Full width */
 }
 
-.confirmation-item-image {
-  width: 40px; /* Smaller width for uniformity */
-  height: 40px; /* Smaller height for uniformity */
-  object-fit: cover; /* Ensure images cover the area without distortion */
-  border-radius: 4px; /* Rounded corners for a softer look */
+form button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
 }
 
-.confirmation-item-details {
-  flex-grow: 1;
-}
-
-.confirmation-item-details p {
-  margin: 5px 0;
-}
-
-.confirmation-summary {
-  margin-top: 20px;
-}
-
-.confirmation-summary h3 {
-  margin: 5px 0;
-  color: #fff; /* Color for summary headings */
+/* Add spacing at the bottom */
+.footer {
+  margin-top: 20px; /* Ensure space above footer */
 }
 
 /* Additional styles for better responsiveness and usability */
