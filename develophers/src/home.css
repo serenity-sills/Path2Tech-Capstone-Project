@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box
+}
+.wrap{
+    position:absolute;
+    top: 50px;
+    left: 50px;
+    transform: translate(-50%, -50%);
+}
+.menu{
+    width: 50px;
+    height: 10px;
+    background:black;
+    margin: 20px 0;
+
+}
+
+
+
+body {
+
+    background-position: center;
+    flex: 30;
+    height: 20px;
+    background-color: rgb(2, 34, 24) !important;
+    margin: 20px;
+    padding: 10px 10px;
+ 
+}
+
+.imgMain{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.search-box {
+    width: 300px;
+    background: black;
+    margin: 50px auto 0;
+    border-radius: 5px;
+
+}
+.row{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px ;
+}
+input{
+    flex: 1;
+    height: 50px;
+    background: rgb(33, 31, 31);
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    font-style: inherit ;
+}
+button{
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+nav{
+    margin: 80px;
+    padding: 20px 20px;
+    border-radius: 5px;
+    position: center;
+
+}
+.footerBottom{
+    
+    margin: 100px;
+    padding: 20px 20px;
+    border-radius: 5px;
+    font-size: large;
+    align-items: center;
+}
+.footerNav{
+    color: azure;
+    
+}
+.fa-instagram{
+    font-size: 30px;
+     margin: auto;
+     display: block;
+}
+.fa-pinterest-p{
+    font-size: 30px;
+ 
+    margin: auto;
+    display: block;
+}
+.fa-tiktok{
+    font-size: 30px;
+    margin: 50px;
+    margin: auto;
+     display: block;
+}
+.fa-facebook{
+    font-size: 30px;
+    margin: 50px;
+    margin: auto;
+     display: block;
+}
+a{
+    margin-left: 50px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    font-size: large;
+    align-items: center;
+
+}
+.logo{
+    margin-left: 10px;
+    padding: 20px 20px;
+    border-radius: 10px;
+    font-size: small;
+    align-items: center;
+}
