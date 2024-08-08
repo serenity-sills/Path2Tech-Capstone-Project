@@ -1,0 +1,75 @@
+/* Cart Page Styles */
+.cart-page {
+  max-width: 1200px; /* Set a maximum width */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
+  text-align: center; /* Center align text */
+}
+
+/* Flex container for cart and summary */
+.cart-container {
+  display: flex;
+  justify-content: center; /* Center both items and summary */
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Space between cart and summary */
+}
+
+.cart-items, .cart-summary {
+  flex: 1;
+  max-width: 500px; /* Set a max-width to both sections */
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #333; /* Border color */
+  padding: 15px;
+  border-radius: 5px;
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+}
+
+/* Cart summary styles */
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  gap: 20px; /* Space between total sections */
+  border: 1px solid #333; /* Add border around summary */
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center; /* Center align text in summary */
+}
+
+.checkout-button {
+  align-self: center; /* Center the checkout button */
+}

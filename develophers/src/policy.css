@@ -1,23 +1,107 @@
-body {
-
-    background-position: center;
-    flex: 30;
-    height: 20px;
-    background-color: rgb(2, 34, 24) !important;
-    margin: 20px;
-    padding: 10px 10px;
- 
+/* General reset for header */
+header {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    position: relative; /* Ensure the header has positioning context */
 }
 
-h1{
-    text-align: center;
-    text-decoration: underline;
+/* Ensure menu container is correctly positioned */
+.menu-container {
+    display: flex;
+    justify-content: space-between; /* Space between menu and logo */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Adjust padding as needed */
+    position: absolute; /* Position the container absolutely */
+    top: 0;
+    left: 0;
+    right: 0; /* Ensure the container spans the full width */
 }
 
-.logo{
-    margin-left: 10px;
-    padding: 20px 20px;
-    border-radius: 10px;
-    font-size: small;
-    align-items: center;
+/* Menu bar styling */
+.menu-bar {
+    background-color: transparent;
+    padding: 0;
+    position: relative; /* Ensures the menu bar is properly positioned */
+}
+
+/* Menu button styling */
+.menu-button {
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background for contrast */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px; /* Rounded corners for the button */
+    padding: 10px; /* Adjust padding as needed */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Logo styling */
+.logo {
+    height: 90px; /* Adjust the size of the logo as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-left: auto; /* Push the logo to the right */
+}
+
+/* Dropdown menu styling */
+.dropdown-content {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for contrast */
+    border: 1px solid #ddd; /* Light border for the dropdown */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    padding: 10px; /* Add padding inside dropdown */
+    border-radius: 4px; /* Rounded corners for dropdown */
+    position: absolute; /* Ensure dropdown appears above other content */
+    top: 100%; /* Position below the menu bar */
+    left: 0;
+    right: 0; /* Full width for the dropdown */
+}
+
+/* Dropdown links styling */
+.dropdown-content a {
+    color: white; /* White text for dropdown links */
+    text-decoration: none; /* Remove underline from links */
+    display: block; /* Block display for full-width clickable area */
+    padding: 10px; /* Padding inside dropdown links */
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter background on hover */
+}
+
+/* Main content styling */
+main {
+    background-color: rgb(2, 34, 24);; /* Dark background for the main content */
+    text-align: center; /* Center the text */
+    margin-top: 60px; /* Adjust as needed to create space below the menu bar */
+    padding: 20px; /* Add padding for better readability */
+}
+
+/* Box styling for specific headers only */
+h2, h4 {
+    margin: 20px auto; /* Center and add vertical space */
+    padding: 20px; /* Add padding inside boxes */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Light border around boxes */
+    border-radius: 4px; /* Rounded corners for boxes */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background color for contrast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    color: white; /* White text color */
+    max-width: 90%; /* Maximum width relative to the viewport width */
+    width: 800px; /* Fixed width for larger screens */
+    text-align: center; /* Center text inside boxes */
+}
+
+/* Ensure boxes are responsive */
+@media (max-width: 600px) {
+    h2, h4 {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+}
+
+/* Remove boxes from other elements */
+p {
+    margin: 0; /* Remove margin for paragraphs */
+    padding: 0; /* Remove padding for paragraphs */
+    border: none; /* Remove border from paragraphs */
+    border-radius: 0; /* Remove border radius from paragraphs */
+    background-color: transparent; /* Remove background color from paragraphs */
+    box-shadow: none; /* Remove shadow from paragraphs */
 }

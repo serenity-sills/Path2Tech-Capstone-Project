@@ -1,125 +1,175 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', sans-serif;
-    box-sizing: border-box
-}
-.wrap{
-    position:absolute;
-    top: 50px;
-    left: 50px;
-    transform: translate(-50%, -50%);
-}
-.menu{
-    width: 50px;
-    height: 10px;
-    background:black;
-    margin: 20px 0;
-
+/* General styles for the nav and logo container */
+.home-page-wrapper nav {
+    position: relative;
 }
 
-
-
-body {
-
-    background-position: center;
-    flex: 30;
-    height: 20px;
-    background-color: rgb(2, 34, 24) !important;
-    margin: 20px;
-    padding: 10px 10px;
- 
+.home-page-wrapper .logo-container {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.imgMain{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
+.home-page-wrapper .menu-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-
-
-.search-box {
-    width: 300px;
-    background: black;
-    margin: 50px auto 0;
-    border-radius: 5px;
-
-}
-.row{
+.home-page-wrapper .menu {
+    cursor: pointer;
     display: flex;
-    align-items: center;
-    padding: 10px 20px ;
-}
-input{
-    flex: 1;
-    height: 50px;
-    background: rgb(33, 31, 31);
-    border: 0;
-    outline: 0;
-    font-size: 18px;
-    font-style: inherit ;
-}
-button{
-    background: transparent;
-    border: 0;
-    outline: 0;
+    flex-direction: column;
+    gap: 5px;
 }
 
-nav{
-    margin: 80px;
-    padding: 20px 20px;
-    border-radius: 5px;
-    position: center;
+.home-page-wrapper .menu div {
+    width: 30px;
+    height: 3px;
+    background-color: rgb(250, 250, 250);
+}
 
+.home-page-wrapper .dropdown-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
 }
-.footerBottom{
-    
-    margin: 100px;
-    padding: 20px 20px;
-    border-radius: 5px;
-    font-size: large;
-    align-items: center;
-}
-.footerNav{
-    color: azure;
-    
-}
-.fa-instagram{
-    font-size: 30px;
-     margin: auto;
-     display: block;
-}
-.fa-pinterest-p{
-    font-size: 30px;
- 
-    margin: auto;
+
+.home-page-wrapper .dropdown-menu a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
     display: block;
 }
-.fa-tiktok{
-    font-size: 30px;
-    margin: 50px;
-    margin: auto;
-     display: block;
-}
-.fa-facebook{
-    font-size: 30px;
-    margin: 50px;
-    margin: auto;
-     display: block;
-}
-a{
-    margin-left: 50px;
-    padding: 30px 20px;
-    border-radius: 10px;
-    font-size: large;
-    align-items: center;
 
+.home-page-wrapper .dropdown-menu a:hover {
+    background-color: #f0f0f0;
 }
-.logo{
-    margin-left: 10px;
-    padding: 20px 20px;
-    border-radius: 10px;
-    font-size: small;
+
+.home-page-wrapper .menu.open + .dropdown-menu {
+    display: flex;
+}
+
+.home-page-wrapper .imgMain {
+    max-width: 80%; /* Limit the maximum width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Ensure the image is displayed as a block */
+}
+
+/* Footer styles */
+.home-page-wrapper footer {
+    background-color: rgb(2, 34, 24);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.home-page-wrapper .social-media-icons {
+    margin-bottom: 10px;
+}
+
+.home-page-wrapper .social-media-icons img {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+    filter: invert(1); /* Make icons white */
+}
+
+.home-page-wrapper .footer-bottom {
+    margin-top: 10px;
+}
+
+.home-page-wrapper .footer-bottom p {
+    margin: 0;
+}
+
+.home-page-wrapper .designer {
+    font-weight: bold;
+}
+
+/* Container for positioning the search bar in the upper right corner */
+.home-page-wrapper .search-bar-container {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    display: flex;
     align-items: center;
+}
+  
+.home-page-wrapper .search-bar-container input {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 150px; /* Adjust width as needed */
+    margin-right: 10px;
+    z-index: 1000; /* Ensure input field is above other elements */
+}
+  
+.home-page-wrapper .search-bar-container button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: rgb(2, 34, 24);
+    color: white;
+    cursor: pointer;
+    z-index: 1000; /* Ensure input field is above other elements */
+}
+  
+.home-page-wrapper .search-bar-container button:hover {
+    background-color: rgb(33, 31, 31);
+}
+  
+/* Popup styles */
+.home-page-wrapper .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+  
+.home-page-wrapper .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+    color: black; /* Set text color to black */
+}
+  
+.home-page-wrapper .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+  
+.home-page-wrapper .popup-close:hover {
+    color: red;
+}
+  
+/* Slogan styles */
+.home-page-wrapper .slogan-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* Adjust margin as needed */
+}
+
+.home-page-wrapper .slogan-text {
+    font-size: 24px; /* Adjust font size as needed */
+    font-weight: bold;
+    color: white; /* Or any color that contrasts with the background */
+    text-align: center;
 }
