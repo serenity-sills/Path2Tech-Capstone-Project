@@ -1,0 +1,88 @@
+/* Checkout Page Styles */
+.checkout-wrapper {
+  background-color: #f0f0f0; /* Background color for the checkout page */
+  padding: 20px;
+}
+
+.checkout-page {
+  display: flex;
+  justify-content: center; /* Center the containers horizontally */
+  align-items: flex-start; /* Align containers to the top */
+  gap: 20px; /* Spacing between the two containers */
+}
+
+.items-summary-container,
+.form-container {
+  width: 45%; /* Adjust width as needed to ensure both containers fit side by side */
+  background: #fff; /* Ensure background is white for both containers */
+  border-radius: 8px;
+  padding: 20px;
+  color: black; /* Ensure all text in both containers is black */
+}
+
+.items-summary {
+  text-align: left;
+}
+
+.items-summary h2 {
+  margin-top: 0;
+}
+
+.items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.items-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space out items in the list */
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.items-list img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between name, price, and quantity */
+  flex-grow: 1; /* Allow item details to take up remaining space */
+}
+
+.item-price, .item-quantity {
+  margin: 0;
+}
+
+.form-container {
+  background: #fff;
+  color: black; /* Ensure all text in the form container is black */
+}
+
+.form-section {
+  text-align: left;
+}
+
+.form-section h2 {
+  margin-top: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875em;
+}
+
+.items-summary .order-totals {
+  border-top: 2px solid #333; /* Add a border above the totals section */
+  padding-top: 10px;
+}
+
+.items-summary .order-totals p {
+  margin: 5px 0; /* Add spacing between totals */
+}

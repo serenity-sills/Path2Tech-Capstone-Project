@@ -1,0 +1,117 @@
+/* Wrapper for Product Page */
+.product-page-wrapper {
+  background-color: white; /* Set background color to white */
+  padding: 20px; /* Add padding around the content */
+  position: relative; /* Allow positioning of elements inside */
+}
+
+/* Main page title styles */
+.product-page-title {
+  text-align: center; /* Center the title text */
+  font-size: 2rem; /* Set font size for the title */
+  margin-bottom: 20px; /* Space below the title */
+  color: rgb(255, 255, 255); /* Set title color to white */
+}
+
+/* Animate elements on load */
+.animate-on-load {
+  opacity: 0; /* Start as invisible */
+  transform: translateY(20px); /* Start with a downward shift */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for appearance */
+}
+
+.slide-in {
+  opacity: 1; /* Make visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+/* Styling for the view cart link */
+.view-cart-link {
+  position: fixed; /* Fix position relative to the viewport */
+  top: 15px; /* Distance from the top of the screen */
+  right: 15px; /* Distance from the right edge of the screen */
+  background-color: grey; /* Set background color to grey */
+  color: white; /* Set text color to white */
+  padding: 10px 20px; /* Padding inside the link */
+  border-radius: 5px; /* Round the corners */
+  text-decoration: none; /* Remove underline from the link */
+  transition: background-color 0.3s ease; /* Smooth transition for background color change */
+}
+
+.view-cart-link:hover {
+  background-color: blue; /* Change background color on hover */
+  color: white; /* Ensure text color stays white */
+}
+
+/* Pop-up notification styling */
+.popup {
+  position: fixed; /* Fix position relative to the viewport */
+  top: 15px; /* Distance from the top of the screen */
+  right: 15px; /* Distance from the right edge of the screen */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  color: white; /* Set text color to white */
+  padding: 10px; /* Padding inside the popup */
+  border-radius: 5px; /* Round the corners */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Product list and item styles */
+.product-list {
+  display: grid; /* Use grid layout for the product list */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid with adjustable columns */
+  gap: 20px; /* Space between grid items */
+}
+
+.product-item {
+  border: 1px solid #333; /* Border color for each product item */
+  padding: 15px; /* Padding inside each product item */
+  border-radius: 5px; /* Round the corners */
+  text-align: center; /* Center text inside the product item */
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
+  overflow: hidden; /* Hide overflow content */
+  position: relative; /* Allow absolute positioning inside */
+}
+
+/* Add animation styles for product item */
+.product-item.animate-on-load {
+  opacity: 0; /* Start as invisible */
+  transform: translateY(20px); /* Start with a downward shift */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for appearance */
+}
+
+.product-item.slide-in {
+  opacity: 1; /* Make visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+.product-main-image {
+  width: 200px; /* Fixed width for main product image */
+  height: 200px; /* Fixed height for main product image */
+  object-fit: cover; /* Ensure image covers the area without distortion */
+  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+.product-main-image:hover {
+  transform: scale(1.1); /* Zoom in slightly on hover */
+}
+
+.product-small-images {
+  display: flex; /* Use flexbox to align small images */
+  justify-content: center; /* Center small images horizontally */
+  gap: 10px; /* Space between small images */
+  margin-top: 10px; /* Space above small images */
+  position: relative; /* Position relative for overlay effects */
+}
+
+.product-small-image {
+  width: 50px; /* Fixed width for small images */
+  height: 50px; /* Fixed height for small images */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+.product-small-image:hover {
+  transform: scale(1.2); /* Zoom in more on hover */
+}

@@ -1,0 +1,74 @@
+/* Confirmation Page Styles */
+.confirmation-wrapper {
+  background-color: #f9f9f9; /* Background color for the wrapper */
+  padding: 20px;
+  position: relative; /* Ensure the logo is positioned relative to this container */
+}
+
+.logo-link {
+  position: absolute; /* Position the logo absolutely within the wrapper */
+  top: 20px; /* Adjust top position */
+  right: 20px; /* Adjust right position */
+}
+
+.logo-image {
+  width: 100px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.confirmation-page {
+  display: flex;
+  justify-content: space-between; /* Space between the two containers */
+  padding: 20px;
+  background-color: white;
+  color: black;
+}
+
+.order-details {
+  width: 50%; /* Adjust width to ensure this container fits half of the space */
+}
+
+.confirmation-items {
+  width: 50%; /* Adjust width to ensure this container fits half of the space */
+}
+
+.order-details, .confirmation-items {
+  padding: 20px; /* Add padding to the containers */
+}
+
+.confirmation-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.confirmation-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.confirmation-item-image {
+  width: 100px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  object-fit: cover;
+  margin-right: 15px; /* Adjust margin for spacing */
+}
+
+.confirmation-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmation-item p {
+  margin: 5px 0; /* Add spacing between lines of text */
+}
+
+.order-details h1, 
+.order-details h2, 
+.order-details h3, 
+.order-details p {
+  margin: 10px 0; /* Add spacing between headings and paragraphs */
+}
