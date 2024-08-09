@@ -1,105 +1,165 @@
+/* Header styling */
 header h1 {
-    color: white;
-  }
-  .about-container {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(https://res.cloudinary.com/dt84tw7zr/image/fetch/f_auto,g_auto,q_auto/https://www.gameplan-a.com/wp-content/uploads/fly-images/21103/Female-athletes-adidas-women-1440x9999.jpg);
-    background-size: cover;
-    background-position: center;
-  }
-  
-  header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: relative;
-  }
-  
-  .menu-bar {
-    position: relative;
-  }
-  
-  .menu-button {
-    background-color: black;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .menu-bar:hover .dropdown-content {
-    display: block;
-  }
-  
-  .search-bar {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .search-bar input {
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .about-us-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    height: calc(100vh - 60px); 
-  }
-  
-  .about-us-box {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    text-align: center;
-    margin: 10px;
-  }
-  
-  .about-us-box h2 {
-    margin-top: 0;
-    color: black; 
-  }
-  
-  .about-us-box p {
-    color: black;
-  }
-  
-  
+  color: white; /* Set text color to white */
+  text-align: center; /* Center the header text */
+  width: 100%; /* Ensure header text takes full width for centering */
+}
+
+/* About page container styling */
+.about-container {
+  font-family: Arial, sans-serif; /* Use Arial font for text */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  background-image: url(https://res.cloudinary.com/dt84tw7zr/image/fetch/f_auto,g_auto,q_auto/https://www.gameplan-a.com/wp-content/uploads/fly-images/21103/Female-athletes-adidas-women-1440x9999.jpg); /* Background image */
+  background-size: cover; /* Cover the entire container with the background image */
+  background-position: center; /* Center the background image */
+  background-color: transparent; /* Transparent background color */
+}
+
+/* Header layout and styling */
+header {
+  width: 100%; /* Full width */
+  display: flex; /* Use flexbox layout */
+  justify-content: space-between; /* Space items out horizontally */
+  align-items: center; /* Center items vertically */
+  padding: 10px 20px; /* Add padding inside the header */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  position: relative; /* Allow absolute positioning of child elements */
+}
+
+/* Menu bar styling */
+.menu-bar {
+  position: relative; /* Position relative for dropdown positioning */
+}
+
+.menu-button {
+  background-color: rgb(13, 0, 0); /* Dark red background */
+  border: none; /* Remove default border */
+  color: white; /* Set text color to white */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Dropdown menu styling */
+.dropdown-content {
+  display: none; /* Hide dropdown by default */
+  position: absolute; /* Position dropdown below menu button */
+  top: 100%; /* Position dropdown directly below the button */
+  left: 0; /* Align to the left of the button */
+  background-color: white; /* White background for dropdown */
+  min-width: 160px; /* Minimum width of dropdown */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow effect */
+  z-index: 1; /* Ensure dropdown is above other elements */
+}
+
+.dropdown-content a {
+  color: black; /* Set link color to black */
+  padding: 12px 16px; /* Padding inside links */
+  text-decoration: none; /* Remove underline from links */
+  display: block; /* Make links block elements */
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd; /* Light grey background on hover */
+}
+
+.menu-bar:hover .dropdown-content {
+  display: block; /* Show dropdown on menu bar hover */
+}
+
+/* About Us section styling */
+.about-us-container {
+  display: flex; /* Use flexbox layout */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap; /* Allow wrapping of items */
+  padding: 20px; /* Add padding around the content */
+  height: calc(100vh - 60px); /* Full viewport height minus header height */
+  background-color: transparent; /* Transparent background color */
+}
+
+/* Styling for individual boxes in the About Us section */
+.about-us-box {
+  background-color: white; /* White background for each box */
+  padding: 20px; /* Padding inside each box */
+  border-radius: 10px; /* Round corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  max-width: 300px; /* Maximum width of the box */
+  text-align: center; /* Center text inside the box */
+  margin: 10px; /* Space around each box */
+}
+
+.about-us-box h2 {
+  margin-top: 0; /* Remove top margin from heading */
+  color: black; /* Set heading color to black */
+}
+
+.about-us-box p {
+  color: black; /* Set paragraph text color to black */
+}
+
+/* Search bar container styles */
+.search-bar-container {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Center items vertically */
+  margin-top: 20px; /* Space above the search bar container */
+}
+
+.search-bar-container input {
+  padding: 5px; /* Padding inside the input field */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 4px; /* Round corners */
+  width: 200px; /* Set width of input field */
+  margin-right: 10px; /* Space to the right of the input field */
+}
+
+.search-bar-container button {
+  padding: 5px 10px; /* Padding inside the button */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 4px; /* Round corners */
+  background-color: rgb(2, 34, 24); /* Dark green background */
+  color: white; /* Set text color to white */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.search-bar-container button:hover {
+  background-color: rgb(33, 31, 31); /* Darker background on hover */
+}
+
+/* Popup styling */
+.popup-container {
+  position: fixed; /* Fix position relative to viewport */
+  top: 0; /* Align to the top of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  width: 100%; /* Full width of viewport */
+  height: 100%; /* Full height of viewport */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  z-index: 9999; /* Ensure it appears above other elements */
+}
+
+.popup-content {
+  background-color: white; /* White background for the popup */
+  padding: 20px; /* Padding inside the popup */
+  border-radius: 5px; /* Round corners */
+  position: relative; /* Position relative for close button */
+  text-align: center; /* Center text inside the popup */
+  color: black; /* Set text color to black */
+}
+
+.popup-close {
+  position: absolute; /* Absolute positioning for close button */
+  top: 10px; /* Space from the top */
+  right: 10px; /* Space from the right */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-size: 20px; /* Font size of close button */
+}
+
+.popup-close:hover {
+  color: red; /* Change color of close button on hover */
+}

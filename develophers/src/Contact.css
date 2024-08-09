@@ -1,0 +1,148 @@
+/* Apply background to the entire page */
+.page-background {
+    background-image: url('./assets/athletes.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 20px;
+  }
+  
+  /* Menu bar styles */
+  .menu-container {
+    width: 100%;
+    position: absolute; /* Position at the top of the page */
+    top: 0;
+    left: 0;
+    padding: 10px;
+  }
+  
+  .menu-bar {
+    display: flex;
+    justify-content: flex-start; /* Align menu button to the left */
+  }
+  
+  .menu-button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50px; /* Position dropdown below the button */
+    left: 0;
+    width: 100%;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content.open {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .contact-container {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 80px; /* Space for the menu bar */
+  }
+  
+  .contact-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Darker color for better visibility */
+  }
+  
+  .form-group {
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    width: 100%; /* Ensure form groups use full width of container */
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Darker color for better visibility */
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px; /* Increased padding for better readability */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px; /* Increased font size for better readability */
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px; /* Slightly increased minimum height for textarea */
+  }
+  
+  .error {
+    border-color: red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px; /* Added margin for better spacing */
+  }
+  
+  .success-message {
+    color: green;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1em; /* Increased font size for emphasis */
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px; /* Increased padding for better touch targets */
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase; /* Added text-transform for button text */
+  }
+  
+  button:hover {
+    background-color: #3339e2;
+  }
+  
+  .contact-logo {
+    display: block;
+    margin: 0 auto 20px; /* Center horizontally with auto margin and add bottom margin */
+    max-width: 200px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  
+  
